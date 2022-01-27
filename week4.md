@@ -1,0 +1,5 @@
+- 250122:
+    - [X] read and annotate papers:
+        - [X] longitudinal analysis bloated java
+        - [X] maven dependency graph
+        - [X] vulnerable open source dependencies

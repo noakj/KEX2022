@@ -1,0 +1,22 @@
+<script>
+  import { onMount, setContext } from 'svelte'
+  import cytoscape from 'cytoscape'
+
+  setContext('graphSharedState', {
+    getCyInstance: () => cyInstance
+  })
+
+  let refElement = null
+  
+  let cyInstance = null
+
+  onMount(() => 
+  )
+  
+</script>
+
+<div class="graph" bind:this={refElement}>
+  {#if cyInstance}
+    <slot></slot>
+  {/if}
+</div>
