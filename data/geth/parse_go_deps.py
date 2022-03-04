@@ -21,8 +21,6 @@ if __name__ == "__main__":
                     temp.append(target)
                     dependencies[source] = temp
 
-    print(dependencies)
-
     with open(root_name + '_dependencies.json', 'w') as deps_file:
         json.dump(dependencies, deps_file)
 

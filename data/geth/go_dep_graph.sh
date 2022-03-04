@@ -1,4 +1,4 @@
 #!/bin/bash
 
-go list -m -f '{{.Path}} {{.Version}}' all | parse_go_mods.py
-# go mod graph | sed "s/@/ /g" | parse_go_deps.py
+go list -m -f '{{.Path}} {{.Version}}' all | sed 's/ /@/' | python3 parse_go_mods.py
+go mod graph | python3 parse_go_deps.py
