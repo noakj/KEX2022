@@ -6,7 +6,7 @@
 ### INTRO AND BACKGROUND (DEADLINE is April 14th)
 - [.] Create a figure with the thesis pipeline and describe it (goes into a methodology section):
     - [X] figure
-    - [ ] Justify the motivation
+    - [ ] Justify the model
     - [ ] Describe the technical challenges
 - [ ] Write a section with the state of the art (10 to 15 papers and summarize the methodology)
     - How many projects are analyzed?
