@@ -24,19 +24,16 @@ def format_artifact(module):
 if __name__ == "__main__":
 
     modules = sys.stdin
-    unified_project_tree = {}
     artifacts = {}
     project = format_artifact(modules.readline().rstrip('\n'))
-    
-    unified_project_tree['project'] = project
+
+    artifacts[project.get('gav')] = project
     
     for mod in modules.read().splitlines():
 
         artifact = format_artifact(mod)
         gav = artifact['gav']
         artifacts[gav] = artifact
-
-    unified_project_tree['artifacts'] = artifacts
 
     with open(project['artifactId'] + '_artifacts.json', 'w') as file:
         json.dump(artifacts, file)

@@ -15,6 +15,8 @@ if __name__ == "__main__":
         for dep in graph.read().splitlines():
 
             source, target = dep.split(' ') 
+            if 'ethereum' in source:
+                source += '@'
             if source in artifacts:
                 if target in artifacts:
                     temp = dependencies.get(source, [])

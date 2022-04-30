@@ -14,9 +14,9 @@ def format_artifact(data):
     group = path.split('/')[-1] 
 
     return {
-            'name': name,
+            'artifactId': name,
+            'groupId': group,
             'version': version,
-            'group': group,
             'gav': group + name + '@' + version
             }
 

@@ -1,4 +1,5 @@
 import sys
+import os
 import json
 import re
 
@@ -10,8 +11,8 @@ def format_artifact(data):
     version = split_data.pop()
 
     return {
-            'group': group,
-            'artifact': artifact,
+            'groupId': group,
+            'artifactId': artifact,
             'version': version,
             'gav': group + artifact + '@' + str(version),
             }
@@ -19,6 +20,9 @@ def format_artifact(data):
 if __name__ == "__main__":
 
     tree = sys.stdin
+    path = os.getcwd()
+    project = path.split('/').pop(-1)
+    project = project.split('-')[0]
 
     artifacts = {}
     dependencies = {}
@@ -26,7 +30,8 @@ if __name__ == "__main__":
 
     re_depth = re.compile('[^\w.]')
 
-    parents = []
+    parents = [project]
+    print(project)
 
     for line in tree.read().splitlines():
 
@@ -46,8 +51,8 @@ if __name__ == "__main__":
         temp.append(gav)
         dependencies[parent] = temp
 
-    with open('_artifacts.json', 'w') as file:
+    with open(project + '_artifacts.json', 'w') as file:
         json.dump(artifacts, file)
 
-    with open('_dependencies.json', 'w') as file:
+    with open(project + '_dependencies.json', 'w') as file:
         json.dump(dependencies, file)
