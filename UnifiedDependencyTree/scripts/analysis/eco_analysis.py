@@ -47,22 +47,13 @@ if __name__ == "__main__":
     for project_name in project_paths:
         projects[project_name] = get_project_tree(project_name)
     
-    
-    #get ecosystem intersection
     artifact_sets = []
-
     for project_name in project_paths:
         project_artifacts = get_project_artifacts(project_name)
         artifact_sets.append(set(project_artifacts))
 
+    #get ecosystem intersection
     intersection = set.intersection(*artifact_sets)
-
-    #get common dependencies
-    all_dependencies = []
-    
-    for project_name in project_paths:
-        project_dependencies = get_project_dependencies(project_name)
-        all_dependencies = [...all_dependencies, ...project_dependencies]
 
     #get monoculture suppliers
     intersection_suppliers = []
@@ -77,5 +68,5 @@ if __name__ == "__main__":
     supplier_counter = Counter(intersection_suppliers)
 
     with open(''.join(project_paths) + '.txt', 'w') as outfile:
-        outfile.write('Intersection count: ' + str(len(intersection)) + '\n')
+        outfile.write('Intersection count: ' + str(len(intersection_suppliers)) + '\n')
         outfile.write(str(supplier_counter))

@@ -24,6 +24,16 @@ def get_all_deps(dependencies):
 
     return all_deps
 
+def rec_all_deps(cur, dependencies):
+
+    count = 0
+    cur_deps = dependencies.get(cur)
+    if (cur_deps):
+        for dep in cur_deps:
+             count += rec_all_deps(dep, dependencies)
+
+    return count
+
 
 def get_direct_deps(project, dependencies):
     
@@ -78,12 +88,10 @@ if __name__ == "__main__":
     all_deps_list = get_all_deps(dependencies)
     redundant_deps = get_redundant_libraries(all_deps_list, artifacts)
     total_redundancy = sum([dep for dep in redundant_deps.values() if dep > 1])
-    
+            
     with open(path + '_metadata.txt', 'w') as outfile:
         outfile.write('Direct: ' + str(direct_deps_count) + '\n')
         outfile.write('Transitive: ' + str(transitive_deps_count) + '\n')
         outfile.write('Suppliers: ' + str(suppliers_count) + '\n')
         outfile.write('Total dependencies' + str(len(all_deps_list)) + '\n')
         outfile.write('Redundancy: ' + str(total_redundancy) + '\n')
-
-        outfile.write(str(redundant_deps))
