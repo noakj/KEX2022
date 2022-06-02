@@ -1,8 +1,8 @@
 # Unified Dependency Tree
 
 ## About
-Set of scripts for extracting and analysing dependency trees of projects written in Go, Rust, & Java
-Created and used for bachelors thesis project.
+- Set of scripts for extracting and analysing dependency trees of projects written in Go, Rust, & Java
+- Created and used for bachelors thesis project.
 
 ## Extraction
 - shell scripts for extracting dependency trees
